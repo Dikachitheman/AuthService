@@ -1,0 +1,19 @@
+{
+  "family": "auth-service",
+  "containerDefinitions": [
+    {
+      "name": "auth-service",
+      "image": "587452804309.dkr.ecr.us-east-1.amazonaws.com/auth-service:latest",
+      "memory": 512,
+      "cpu": 256,
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 8080, "hostPort": 8080 }
+      ],
+      "environment": [
+        { "name": "ConnectionStrings__DefaultConnection", "value": "Server=<rds-endpoint>;Database=OrdersDB;User Id=sa;Password=YourPassword;" },
+        { "name": "RabbitMQ__Host", "value": "rabbitmq" }
+      ]
+    }
+  ]
+}
