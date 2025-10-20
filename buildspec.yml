@@ -9,15 +9,15 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t authservice .
-      - docker tag authservice:latest 587452804309.dkr.ecr.us-east-1.amazonaws.com/authservice:latest
+      - docker build -t auth-service .
+      - docker tag auth-service:latest 587452804309.dkr.ecr.us-east-1.amazonaws.com/auth-service:latest
 
   post_build:
     commands:
       - echo Pushing the Docker image...
-      - docker push 587452804309.dkr.ecr.us-east-1.amazonaws.com/authservice:latest
+      - docker push 587452804309.dkr.ecr.us-east-1.amazonaws.com/auth-service:latest
       - echo Creating imagedefinitions.json file...
-      - printf '[{"name":"authservice","imageUri":"587452804309.dkr.ecr.us-east-1.amazonaws.com/authservice:latest"}]' > imagedefinitions.json
+      - printf '[{"name":"auth-service","imageUri":"587452804309.dkr.ecr.us-east-1.amazonaws.com/auth-service:latest"}]' > imagedefinitions.json
 
 artifacts:
   files:
